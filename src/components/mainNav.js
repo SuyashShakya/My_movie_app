@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MainNav = ({children}) => {
   const classes = useStyles();
-  const [tabValue, setTabValue] = React.useState('')
+  const [tabValue, setTabValue] = React.useState(0)
   const history = useHistory();
   React.useEffect(() => {
     switch(tabValue){
@@ -41,7 +41,7 @@ const MainNav = ({children}) => {
   }; 
   return (
     <>
-      <Box display='flex' bgcolor='primary.main' border={1} justifyContent='center' alignItems='center' width='100%' p={1}>
+      <Box display='flex' bgcolor='primary.main' border={1} justifyContent='center' alignItems='center' width='100%' p={1} position='fixed' top={0}>
         <TheatersIcon color='secondary' /> &nbsp;
         <Typography color='secondary' variant='h6'>Movies and Tv Series</Typography> &nbsp;
         <TheatersIcon color='secondary' />
@@ -56,7 +56,7 @@ const MainNav = ({children}) => {
           aria-label="scrollable prevent tabs example"
           className={classes.tab}
         >
-          <Tab label='Trending' icon={<WhatshotIcon />} />
+          <Tab label='Trending' icon={<WhatshotIcon />}/>
           <Tab label='Movies' icon={<MovieIcon />} />
           <Tab label='Tv series' icon={<TvIcon />} />
           <Tab label='Search' icon={<SearchIcon />} />
