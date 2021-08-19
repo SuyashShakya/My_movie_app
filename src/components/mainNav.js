@@ -47,7 +47,8 @@ const MainNav = ({children}) => {
         <TheatersIcon color='secondary' />
       </Box>
       {children}
-      <Box display='flex' justifyContent='center' bgcolor='primary.main' border={1} textAlign='center' width='100%' position='fixed' bottom={0}>
+      <br/> <br/>
+      <Box display='flex' justifyContent='center' bgcolor='primary.main' border={1} textAlign='center' width='100%' position='fixed' bottom={0} >
         <Tabs
           value={tabValue}
           onChange={handleChange}

@@ -18,7 +18,7 @@ const theme = createTheme({
 
 const useStyles = makeStyles(() => ({
   containerStyle: {
-    height: '100vh',
+    height: '100%',
     backgroundColor: `${theme.palette.primary.main}`
   }
 })) 
