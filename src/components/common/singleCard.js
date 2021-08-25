@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const SingleCard = ({image, title, date, type, rating}) => {
     const classes = useStyles()
     return (
-        <Badge badgeContent={rating} color={rating >= 7 ? 'secondary' : 'primary'}>
+        <Badge badgeContent={rating} color={rating >= 7 ? 'primary' : 'secondary'}>
             <Card
                 className={classes.root}
             >
@@ -39,7 +39,7 @@ const SingleCard = ({image, title, date, type, rating}) => {
                     <Box textAlign='center'>
                         <Typography variant='body1'><b>{title}</b></Typography>
                         <Box display='flex' justifyContent='space-between' mt={2}>
-                            <Typography variant='body2'>{type === 'tv' ? 'Tv Series' : 'Movie'}</Typography>
+                            <Typography variant='body2'>{type === 'movie' ? 'Movie' : 'TV Series'}</Typography>
                             <Typography variant='body2'>{date}</Typography>
                         </Box>
                     </Box>

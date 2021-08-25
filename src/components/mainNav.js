@@ -18,26 +18,44 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const MainNav = ({children}) => {
-  const classes = useStyles();
-  const [tabValue, setTabValue] = React.useState(0)
+  const classes = useStyles(0);
+  const [tabValue, setTabValue] = React.useState()
   const history = useHistory();
-  React.useEffect(() => {
-    switch(tabValue){
+  
+  React.useLayoutEffect(() => {
+    switch(history?.location?.pathname){
+      case '/movies':
+        setTabValue(1)
+        break;
+      case '/tvseries':
+        setTabValue(2)
+        break;
+      case '/search':
+        setTabValue(3)
+        break;
+      default:
+        setTabValue(0) 
+    }
+  },[history?.location?.pathname])
+  const handleChange = (event, newValue) => {
+    switch(newValue){
       case 1:
         history.push('/movies')
+        setTabValue(1)
         break;
       case 2:
         history.push('/tvseries')
+        setTabValue(2)
         break;
       case 3:
         history.push('/search')
+        setTabValue(3)
         break;
       default:
-        history.push('/')  
+        history.push('/') 
+        setTabValue(0)  
     }
-  },[tabValue, history])
-  const handleChange = (event, newValue) => {
-    setTabValue(newValue)
+    // setTabValue(newValue)
   }; 
   return (
     <>

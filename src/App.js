@@ -26,22 +26,22 @@ const useStyles = makeStyles(() => ({
 const App = () => {
   const classes = useStyles()
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-          <MainNav>
-            <Box className={classes.containerStyle}>
-              <Container maxWidth='lg'>
-                <Route path='/' exact component={Trending} />  
-                <Route path='/movies' exact component={Movies} />  
-                <Route path='/tvseries' exact component={Tvseries} />     
-                <Route path='/search' exact component={Search} />
-              </Container>
-            </Box>
-          </MainNav>     
-        </Switch>
-      </Router>
-     </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <MainNav>
+          <Box className={classes.containerStyle}>
+            <Container maxWidth='lg'>
+            <Switch>
+              <Route path='/' exact component={Trending} />  
+              <Route path='/movies' component={Movies} />  
+              <Route path='/tvseries' component={Tvseries} />     
+              <Route path='/search' component={Search} />
+              </Switch>
+            </Container>
+          </Box>
+        </MainNav>     
+      </ThemeProvider>
+     </Router>
    )
  }
 

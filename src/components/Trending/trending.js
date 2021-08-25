@@ -7,15 +7,14 @@ import Typography from '@material-ui/core/Typography'
 import SingleCard from '../common/singleCard';
 import PaginationComponent from '../common/pagination'
 
-
 const Trending = () => {
   const [data, setData] = React.useState({})
   const [currentPage, setCurrentPage] = React.useState(1)
   const fetchTrending = async() => {
-    const data  = await axios.get(
+    const {data}  = await axios.get(
       `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`
     );
-    setData(data?.data?.results)
+    setData(data?.results)
   }
   React.useEffect(() => {
     try{
@@ -23,15 +22,18 @@ const Trending = () => {
     } catch(e) {
       console.log('Error:', e)
     }
-  })
-  if(isEmpty(data)) {
-    return <>Loading...</>
-  }
+    // eslint-disable-next-line
+  }, [])
+  
   const onPageChange = (event, page) => {
     setCurrentPage(page);
     window.scroll(0, 0)
   };
-  console.log('data', data)
+
+  if(isEmpty(data)) {
+    return <>Loading...</>
+  }
+
   return (
     <Box mt={5} p={5} textAlign='center'>
       <Typography variant='h4' color='textSecondary' gutterBottom> Trending </Typography>
