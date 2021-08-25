@@ -41,14 +41,14 @@ const MainNav = ({children}) => {
   }; 
   return (
     <>
-      <Box display='flex' bgcolor='primary.main' border={1} justifyContent='center' alignItems='center' width='100%' p={1} position='fixed' top={0}>
+      <Box display='flex' bgcolor='primary.main' border={1} justifyContent='center' alignItems='center' width='100%' p={1} position='fixed' top={0} zIndex={2}>
         <TheatersIcon color='secondary' /> &nbsp;
-        <Typography color='secondary' variant='h6'>Movies and Tv Series</Typography> &nbsp;
+        <Typography color='secondary' variant='h6' onClick={() => window.scroll(0, 0)}> Movies and Tv Series </Typography> &nbsp;
         <TheatersIcon color='secondary' />
       </Box>
       {children}
       <br/> <br/>
-      <Box display='flex' justifyContent='center' bgcolor='primary.main' border={1} textAlign='center' width='100%' position='fixed' bottom={0} >
+      <Box display='flex' justifyContent='center' bgcolor='primary.main' border={1} textAlign='center' width='100%' position='fixed' bottom={0} zIndex={2}>
         <Tabs
           value={tabValue}
           onChange={handleChange}
