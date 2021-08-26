@@ -8,7 +8,7 @@ import SingleCard from '../common/singleCard';
 import PaginationComponent from '../common/pagination'
 
 const Trending = () => {
-  const [data, setData] = React.useState({})
+  const [data, setData] = React.useState()
   const [currentPage, setCurrentPage] = React.useState(1)
   const fetchTrending = async() => {
     const {data}  = await axios.get(
@@ -23,13 +23,8 @@ const Trending = () => {
       console.log('Error:', e)
     }
     // eslint-disable-next-line
-  }, [])
+  }, [currentPage])
   
-  const onPageChange = (event, page) => {
-    setCurrentPage(page);
-    window.scroll(0, 0)
-  };
-
   if(isEmpty(data)) {
     return <>Loading...</>
   }
@@ -44,7 +39,7 @@ const Trending = () => {
           </React.Fragment>
         ))}
       </Box>
-      <PaginationComponent pageCount={10} onPageChange={onPageChange} /> 
+      <PaginationComponent pageCount={10} setCurrentPage={setCurrentPage} /> 
     </Box>
   )
 }
