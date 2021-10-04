@@ -13,13 +13,13 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   tab : {
-    color: `${theme.palette.secondary.main}`
+    color: theme.palette.secondary.dark
   }
 }))
 
 const MainNav = ({children}) => {
   const classes = useStyles(0);
-  const [tabValue, setTabValue] = React.useState()
+  const [tabValue, setTabValue] = React.useState(0)
   const history = useHistory();
   
   React.useLayoutEffect(() => {
@@ -64,21 +64,21 @@ const MainNav = ({children}) => {
         <Typography color='secondary' variant='h6' onClick={() => window.scroll(0, 0)}> Movies and Tv Series </Typography> &nbsp;
         <TheatersIcon color='secondary' />
       </Box>
-      {children}
-      <br/> <br/>
+      <Box mt={5} mb={5}>
+        {children}
+      </Box>
       <Box display='flex' justifyContent='center' bgcolor='primary.main' border={1} textAlign='center' width='100%' position='fixed' bottom={0} zIndex={2}>
         <Tabs
           value={tabValue}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="off"
-          aria-label="scrollable prevent tabs example"
-          className={classes.tab}
+          textColor="secondary"
         >
-          <Tab label='Trending' icon={<WhatshotIcon />}/>
-          <Tab label='Movies' icon={<MovieIcon />} />
-          <Tab label='Tv series' icon={<TvIcon />} />
-          <Tab label='Search' icon={<SearchIcon />} />
+          <Tab className={classes.tab} label='Trending' icon={<WhatshotIcon />}/>
+          <Tab className={classes.tab} label='Movies' icon={<MovieIcon />} />
+          <Tab className={classes.tab} label='Tv series' icon={<TvIcon />} />
+          <Tab className={classes.tab} label='Search' icon={<SearchIcon />} />
         </Tabs>
       </Box>     
     </>

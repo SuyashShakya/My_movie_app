@@ -30,12 +30,12 @@ const Trending = () => {
   }
 
   return (
-    <Box mt={5} p={5} textAlign='center'>
+    <Box p={5} textAlign='center' bgcolor='primary'>
       <Typography variant='h4' color='textSecondary' gutterBottom> Trending </Typography>
       <Box display='flex' flexWrap='wrap' justifyContent='space-around'>
         {data.map((item, key) => (
           <React.Fragment key={item?.id}>
-            <SingleCard image={item?.poster_path} title={item?.title} type={item?.media_type} date={item?.release_date} rating={item?.vote_average} />
+            <SingleCard image={item?.poster_path} title={item?.title} type={item?.media_type} date={item?.release_date} rating={item?.vote_average} id={item?.id} type='movie'/>
           </React.Fragment>
         ))}
       </Box>

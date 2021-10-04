@@ -38,13 +38,13 @@ const Tvseries = () => {
   }
   console.log('data', data)
   return (
-    <Box mt={5} p={5} textAlign='center'>
+    <Box p={5} textAlign='center'>
       <Typography variant='h4' color='textSecondary' gutterBottom> Tv series </Typography>
       <ChipComponent type='tv' genre={genre} setGenre={setGenre} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} setCurrentPage={setCurrentPage} />
       <Box display='flex' flexWrap='wrap' justifyContent='space-around'>
         {data.map((item, key) => (
           <React.Fragment key={item?.id}>
-            <SingleCard image={item?.poster_path} title={item?.name} type={item?.media_type} date={item?.first_air_date} rating={item?.vote_average} />
+            <SingleCard image={item?.poster_path} title={item?.name} type={item?.media_type} date={item?.first_air_date} rating={item?.vote_average} id={item?.id} type='tv' />
           </React.Fragment>
         ))}
       </Box>
