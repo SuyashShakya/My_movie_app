@@ -4,15 +4,22 @@ import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 import {makeStyles} from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
+import LoadingComponent from './loadingComponent';
 
-const useStyles = makeStyles(() => ({
-    chip: {
-        margin: 2
+const useStyles = makeStyles((theme) => ({
+    selectedChip: {
+        margin: 2,
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.main
+    },
+    unSelectedChip: {
+        margin: 2,
+        color: theme.palette.primary.main,
+        backgroundColor: theme.palette.secondary.main
     }
 }))
 
 const ChipComponent = ({type, genre, setGenre, selectedGenre, setSelectedGenre, setCurrentPage}) => {
-    console.log('genre', genre)
     const classes = useStyles();
     const fetchGenre = async() => {
         const {data}  = await axios.get(`https://api.themoviedb.org/3/genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
@@ -22,7 +29,7 @@ const ChipComponent = ({type, genre, setGenre, selectedGenre, setSelectedGenre, 
         try{
           fetchGenre()
         } catch(e) {
-          console.log('Error:', e)
+          console.error('Error:', e)
         }
         return () => {
             setGenre([]); // unmounting
@@ -43,13 +50,14 @@ const ChipComponent = ({type, genre, setGenre, selectedGenre, setSelectedGenre, 
     }
 
     if(isEmpty(genre)) {
-        return <>Loading...</>
+        return <LoadingComponent />
     }
+    
     return (
         <Box p={3}>
             {!isEmpty(selectedGenre) && selectedGenre?.map((item, key) => (
                 <Chip
-                    className={classes.chip}
+                    className={classes.selectedChip}
                     key={item?.id}
                     size="small"
                     label={item?.name}
@@ -59,7 +67,7 @@ const ChipComponent = ({type, genre, setGenre, selectedGenre, setSelectedGenre, 
             ))}
             {genre?.map((item, key) => (
                 <Chip
-                    className={classes.chip}
+                    className={classes.unSelectedChip}
                     key={item?.id}
                     size="small"
                     label={item?.name}

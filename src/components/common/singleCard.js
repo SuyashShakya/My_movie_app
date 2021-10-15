@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
         margin: 5,
         marginBottom: 30,
         padding: 3,
-        maxWidth: 200,
+        maxWidth: 250,
+        minHeight: 520,
         backgroundColor: theme.palette.secondary.main,
         '&:hover': {
             backgroundColor: theme.palette.primary.dark,
