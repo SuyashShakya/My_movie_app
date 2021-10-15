@@ -120,7 +120,7 @@ const ContentModal = ({children, type, id}) => {
                                     {data?.tagline}
                                 </Typography>
                             </center>
-                            <Box mt={2} p={1} borderColor='secondary.light' borderRadius={10} border={1} height={isSmallScreen ? '120px' : '40%'} overflow={isSmallScreen ? 'scroll' : ''} boxShadow={1}>
+                            <Box mt={2} p={1} borderColor='secondary.light' borderRadius={10} border={1} height={isSmallScreen ? '15vh' : '40vh'} overflow={isSmallScreen ? 'scroll' : ''} boxShadow={1}>
                                 <Typography color='secondary'>
                                     {data?.overview}
                                 </Typography>    
